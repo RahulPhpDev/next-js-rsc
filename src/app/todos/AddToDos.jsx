@@ -1,6 +1,6 @@
 'use client'
 import { useActionState, useRef } from "react";
-import postFormData from '../../actions/postFormData';
+import { postFormData } from '../../actions/postFormData';
 import Button from '../../component/Button';
 import Input from './Input';
 const AddToDos = ({children}) => {
@@ -22,13 +22,12 @@ const AddToDos = ({children}) => {
                 resolve('done')
             }, 1000)
         });
-        console.log('this trigger')
         const result = await postFormData(formData)
     }
     const handleClear = () => {
         inputRef.current.clear();  // Calls the clear method defined in MyInput
 
-      };
+    };
     const [state, formAction, isPending] = useActionState(formSubmit, {})
     return (
         <div >
